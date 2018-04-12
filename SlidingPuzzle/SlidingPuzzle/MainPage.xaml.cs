@@ -149,21 +149,37 @@ namespace SlidingPuzzle
         private void El1_Tapped(object sender, TappedRoutedEventArgs e)
         {
             int rHolder, cHolder;
+            int mouseRow, mouseColumn;
 
             Ellipse current = (Ellipse)sender;
             moveMe1 = current;
 
             moveMe2 = FindName("theMouse") as Ellipse;
 
+            mouseRow = (int)moveMe2.GetValue(Grid.RowProperty);
+            mouseColumn = (int)moveMe2.GetValue(Grid.ColumnProperty);
+
             rHolder = (int)current.GetValue(Grid.RowProperty);
             cHolder = (int)current.GetValue(Grid.ColumnProperty);
 
-            moveMe1.SetValue(Grid.RowProperty, moveMe2.GetValue(Grid.RowProperty));
-            moveMe1.SetValue(Grid.ColumnProperty, moveMe2.GetValue(Grid.ColumnProperty));
+            //Check should it be able to move up or down
+            if (((rHolder - 1) == mouseRow && cHolder == mouseColumn) || ((rHolder + 1) == mouseRow && cHolder == mouseColumn))
+            {
+                moveMe1.SetValue(Grid.RowProperty, mouseRow);
+                moveMe1.SetValue(Grid.ColumnProperty, mouseColumn);
 
-            moveMe2.SetValue(Grid.RowProperty, rHolder);
-            moveMe2.SetValue(Grid.ColumnProperty, cHolder);
+                moveMe2.SetValue(Grid.RowProperty, rHolder);
+                moveMe2.SetValue(Grid.ColumnProperty, cHolder);
+            }
+            //Check should it be able to move left or right
+            else if ((rHolder == mouseRow && (cHolder - 1) == mouseColumn) || (rHolder == mouseRow && (cHolder + 1) == mouseColumn))
+            {
+                moveMe1.SetValue(Grid.RowProperty, mouseRow);
+                moveMe1.SetValue(Grid.ColumnProperty, mouseColumn);
 
+                moveMe2.SetValue(Grid.RowProperty, rHolder);
+                moveMe2.SetValue(Grid.ColumnProperty, cHolder);
+            }
         }
 
         private void createChessBoard()
@@ -239,9 +255,7 @@ namespace SlidingPuzzle
                     #endregion
                 } // end iC
             } // end of iR
-
-        }
-            #endregion
-
-        }
-}
+        }// end of createChessBoard
+        #endregion
+    }// end of main
+}// end of SlidingPuzzle
