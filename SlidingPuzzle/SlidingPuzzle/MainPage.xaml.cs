@@ -74,6 +74,7 @@ namespace SlidingPuzzle
 
         }
 
+        //Ellipse mouse = new Ellipse();
         private void setupThePieces()
         {
 
@@ -107,7 +108,7 @@ namespace SlidingPuzzle
                         cat.SetValue(Grid.RowProperty, i);
                         cat.SetValue(Grid.ColumnProperty, j);
 
-                        //cat.Tapped += El1_Tapped;
+                        cat.Tapped += El1_Tapped;
                         board.Children.Add(cat);
                         x++;
                     }
@@ -135,7 +136,7 @@ namespace SlidingPuzzle
              {
                  mouse.SetValue(Grid.ColumnProperty, 2);
              }*/
-            mouse.Tapped += El1_Tapped;
+            //mouse.Tapped += El1_Tapped;
             board.Children.Add(mouse);
 
             // decide where to place on the board
@@ -155,113 +156,128 @@ namespace SlidingPuzzle
 
         }
 
-        Ellipse moveMe;
+        bool mFirst = false;
+        Ellipse moveMe1, moveMe2;
         Border possible1, possible2, possible3, possible4;
         private void El1_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            int toR = 0;
+            int toR = 0, rHolder, cHolder;
 
             Ellipse current = (Ellipse)sender;
-            moveMe = current;
+            moveMe1 = current;
+
             //current.Fill = new SolidColorBrush(Colors.Blue);
             // move cats up, mouse down.
             toR = (int)current.GetValue(Grid.RowProperty);
 
             if (current.Name == "theMouse")
             {
-                // find the squares below this and to the left/rigth
-                //toR++;
+                // highlight the borders.
+                int toC1, toC2;
+                toC1 = (int)current.GetValue(Grid.ColumnProperty) - 1;
+                toC2 = (int)current.GetValue(Grid.ColumnProperty) + 1;
+
+                int toR1, toR2;
+                toR1 = (int)current.GetValue(Grid.ColumnProperty);
+                toR2 = (int)current.GetValue(Grid.ColumnProperty);
+
+                Border brdr;
+
+                //Up and Down
+                if (toR == (_rows - 1))
+                {
+                    brdr = FindName((toR - 1).ToString() + toR2.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible4 = brdr;
+                }
+
+                else if (toR == 0)
+                {
+                    brdr = FindName((toR + 1).ToString() + toR1.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible3 = brdr;
+                }
+
+                else
+                {
+                    brdr = FindName((toR + 1).ToString() + toR1.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible3 = brdr;
+
+                    brdr = FindName((toR - 1).ToString() + toR2.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible4 = brdr;
+                }
+
+                //Left and Right
+                if (toC1 == -1)
+                {
+                    brdr = FindName(toR.ToString() + toC2.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible2 = brdr;
+                }
+
+                else if (toC2 == _rows)
+                {
+                    brdr = FindName(toR.ToString() + toC1.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible1 = brdr;
+                }
+
+                else
+                {
+                    brdr = FindName(toR.ToString() + toC1.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible1 = brdr;
+
+                    brdr = FindName(toR.ToString() + toC2.ToString()) as Border;
+                    brdr.Background = new SolidColorBrush(Colors.Yellow);
+                    brdr.Tag = "valid";
+                    brdr.Tapped += Brdr_Tapped;
+                    possible2 = brdr;
+                }
 
 
             }
-
-
-            // highlight the borders.
-            int toC1, toC2;
-            toC1 = (int)current.GetValue(Grid.ColumnProperty) - 1;
-            toC2 = (int)current.GetValue(Grid.ColumnProperty) + 1;
-
-            int toR1, toR2;
-            toR1 = (int)current.GetValue(Grid.ColumnProperty);
-            toR2 = (int)current.GetValue(Grid.ColumnProperty);
-
-            Border brdr;
-
-            //Up and Down
-            if (toR == (_rows - 1))
-            {
-                brdr = FindName((toR - 1).ToString() + toR2.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible4 = brdr;
-            }
-
-            else if (toR == 0)
-            {
-                brdr = FindName((toR + 1).ToString() + toR1.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible3 = brdr;
-            }
-
             else
             {
-                brdr = FindName((toR + 1).ToString() + toR1.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible3 = brdr;
+                moveMe2 = FindName("theMouse") as Ellipse;
 
-                brdr = FindName((toR - 1).ToString() + toR2.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible4 = brdr;
+                rHolder = (int)current.GetValue(Grid.RowProperty);
+                cHolder = (int)current.GetValue(Grid.ColumnProperty);
+
+                moveMe1.SetValue(Grid.RowProperty, moveMe2.GetValue(Grid.RowProperty));
+                moveMe1.SetValue(Grid.ColumnProperty, moveMe2.GetValue(Grid.ColumnProperty));
+
+                moveMe2.SetValue(Grid.RowProperty, rHolder);
+                moveMe2.SetValue(Grid.ColumnProperty, cHolder);
             }
 
-            //Left and Right
-            if (toC1 == -1)
-            {
-                brdr = FindName(toR.ToString() + toC2.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible2 = brdr;
-            }
 
-            else if (toC2 == _rows)
-            {
-                brdr = FindName(toR.ToString() + toC1.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible1 = brdr;
-            }
+            
 
-            else
-            {
-                brdr = FindName(toR.ToString() + toC1.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible1 = brdr;
-
-                brdr = FindName(toR.ToString() + toC2.ToString()) as Border;
-                brdr.Background = new SolidColorBrush(Colors.Yellow);
-                brdr.Tag = "valid";
-                brdr.Tapped += Brdr_Tapped;
-                possible2 = brdr;
-            }
         }
 
         private void Brdr_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Border current = (Border)sender;
 
-            moveMe.SetValue(Grid.RowProperty, current.GetValue(Grid.RowProperty));
-            moveMe.SetValue(Grid.ColumnProperty, current.GetValue(Grid.ColumnProperty));
+            moveMe1.SetValue(Grid.RowProperty, current.GetValue(Grid.RowProperty));
+            moveMe1.SetValue(Grid.ColumnProperty, current.GetValue(Grid.ColumnProperty));
 
             possible1.Tapped -= Brdr_Tapped;
             possible1.Background = new SolidColorBrush(Colors.White);
@@ -349,17 +365,16 @@ namespace SlidingPuzzle
                 } // end iC
             } // end of iR
 
-
         }
 
-        private void ellipse_Tapped(object sender, TappedRoutedEventArgs e)
+        /*private void ellipse_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Ellipse current = (Ellipse)sender;
 
             current.Fill = new SolidColorBrush(Colors.Green);
 
-        }
-        #endregion
+        }*/
+            #endregion
 
-    }
+        }
 }
