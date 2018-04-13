@@ -34,26 +34,6 @@ namespace SlidingPuzzle
         public MainPage() // constructor
         {
             this.InitializeComponent();
-            // i+=1
-            this.Loaded += MainPage_Loaded;
-        }
-
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            //// create another ellipse
-            //Ellipse el2 = new Ellipse();
-            //el2.Name = "el2";
-            //el2.Height = 200;
-            //el2.Width = 300;
-            //el2.HorizontalAlignment = HorizontalAlignment.Left;
-            //el2.VerticalAlignment = VerticalAlignment.Top;
-            //el2.Fill = new SolidColorBrush(Colors.Blue);
-            //// add it to a collection of children
-            //parentGrid.Children.Add(el2);
-
-            //// add the event handler
-            //el2.Tapped += ellipse_Tapped;
-
         }
 
         // page loaded function
@@ -73,104 +53,53 @@ namespace SlidingPuzzle
             // create method to generate the chess board
             createChessBoard();
             setupThePieces();
-
         }
 
         private void setupThePieces()
         {
-
-            // check the size of board and decide how many cats, how many mice
-            //int numCats = _rows / 2;
-            //Ellipse cat;
+            //Makes an image object named cat for later
             Image cat;
             Grid board = FindName("ChessBoard") as Grid;
             int x = 0;
 
-            // cats = red ellipse, width = 50, height = 50
+            // Two loops to add images in each space
             for (int i = 0; i <= (_rows - 1); i++)
             {
 
 
                 for (int j = 0; j <= (_rows - 1); j++)
                 {
-                    /*cat = new Ellipse();
-                    cat.Name = "cat" + (x + 1).ToString();
-                    cat.Height = _iHeight * 0.75;
-                    cat.Width = _iWidth * 0.75;
-                    cat.HorizontalAlignment = HorizontalAlignment.Center;
-                    cat.VerticalAlignment = VerticalAlignment.Center;
-                    cat.Fill = new SolidColorBrush(Colors.Red);*/
-
-                    
-
                     if (i == 1 && j == 1)
                     {
                         //Used to leave one space empty on the board
+
+                        //Counter for naming
                         x++;
                     }
 
                     else
                     {
-                        //cat.SetValue(Grid.RowProperty, i);
-                        //cat.SetValue(Grid.ColumnProperty, j);
-
-                        //cat.Tapped += El1_Tapped;
-                        //board.Children.Add(cat);
-
+                        //Call the CreateImage function and adds it to one of the cat objects 
                         cat = CreateImage(x);
                         cat.Name = "cat" + (x + 1).ToString();
 
+                        //Adds image to one of the spaces in the grid and also them to be tapped
                         Grid.SetRow(cat, i);
                         Grid.SetColumn(cat, j);
                         board.Children.Add(cat);
                         cat.Tapped += El1_Tapped;
-
+                        
+                        //Counter for naming
                         x++;
                     }
                 }
 
             }
 
-            // mouse = green ellipse, same width
-            // create _rows number of ellipses for cats
-            // create one for the mouse
-            /*Ellipse mouse = new Ellipse();
-            mouse.Name = "theMouse";
-            mouse.Height = _iHeight * 0.75;
-            mouse.Width = _iWidth * 0.75;
-            mouse.HorizontalAlignment = HorizontalAlignment.Center;
-            mouse.VerticalAlignment = VerticalAlignment.Center;
-            mouse.Fill = new SolidColorBrush(Colors.Green);
-            mouse.SetValue(Grid.RowProperty, 1);
-            mouse.SetValue(Grid.ColumnProperty, 1);
-            
-            board.Children.Add(mouse);
-
-            Image imgAnimal = new Image();
-            BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,../Images/1.png");
-            img.EndInit();
-            imgAnimal.Source = img;*/
-
-            /*Image mouse = new Image();
-            //BitmapImage bitmapImage = new BitmapImage();
-            //Uri uri = new Uri("Assets/Logo.png");
-            BitmapImage bitmapImage =
-                     new BitmapImage(new Uri("ms-appx://SlidingPuzzle/Assets/Logo.png"));
-            //bitmapImage.UriSource = uri;
-            mouse.Source = bitmapImage;
-
-            mouse.Height = _iHeight * 0.75;
-            mouse.Width = _iWidth * 0.75;
-            mouse.HorizontalAlignment = HorizontalAlignment.Center;
-            mouse.VerticalAlignment = VerticalAlignment.Center;
-            mouse.SetValue(Grid.RowProperty, 1);
-            mouse.SetValue(Grid.ColumnProperty, 1);*/
-
+            //Call the CreateImage function and adds it to one of the mouse objects 
             Image mouse;
             mouse = CreateImage(4);
-            mouse.Name = "theMouse";
+            mouse.Name = "Mouse";
             Grid.SetRow(mouse, 1);
             Grid.SetColumn(mouse, 1);
             board.Children.Add(mouse);
@@ -188,24 +117,26 @@ namespace SlidingPuzzle
 
         }
 
+        //Creates string with the location of all the images 
         static String ImgName = "ms-appx://SlidingPuzzle/Assets/Image";
 
+        //Used to add images
         private Image CreateImage(int cORm)
         {
+            //Adds the full location for the needed image
             String imageName = ImgName + (cORm + 1).ToString() + ".png";
 
-            Image Mole = new Image();
+            //Adds image object to temporarily hold the image
+            Image section = new Image();
 
-            Mole.Width = (_iWidth * _rows)* 0.33;
-            Mole.Height = (_iHeight * _rows) * 0.33;
-            ImageSource MoleImage = new BitmapImage(new Uri(imageName));
-            Mole.Source = MoleImage;
+            section.Width = (_iWidth * _rows)* 0.33;
+            section.Height = (_iHeight * _rows) * 0.33;
+            ImageSource sectionImage = new BitmapImage(new Uri(imageName));
+            section.Source = sectionImage;
 
-            return Mole;
-
+            return section;
         }
 
-        bool mFirst = false;
         Image moveMe1, moveMe2;
         private void El1_Tapped(object sender, TappedRoutedEventArgs e)
         {
