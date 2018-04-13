@@ -27,7 +27,6 @@ namespace SlidingPuzzle
         int _rows;
         const int _iHeight = 100;
         int _iWidth = 100;
-        //int _iWidth = 55;
         #endregion
 
         #region Constructor and set up code
@@ -55,6 +54,9 @@ namespace SlidingPuzzle
             setupThePieces();
         }
 
+        //Makes an image object named mouse for later
+        Image mouse;
+        int moves = 0;
         private void setupThePieces()
         {
             //Makes an image object named cat for later
@@ -63,11 +65,11 @@ namespace SlidingPuzzle
             int x = 0;
 
             // Two loops to add images in each space
-            for (int i = 0; i <= (_rows - 1); i++)
+            for (int i = 0; i < _rows; i++)
             {
 
 
-                for (int j = 0; j <= (_rows - 1); j++)
+                for (int j = 0; j < _rows; j++)
                 {
                     if (i == 1 && j == 1)
                     {
@@ -97,8 +99,7 @@ namespace SlidingPuzzle
             }
 
             //Call the CreateImage function and adds it to one of the mouse objects 
-            Image mouse;
-            mouse = CreateImage(4);
+            mouse = CreateImage(-1);
             mouse.Name = "Mouse";
             Grid.SetRow(mouse, 1);
             Grid.SetColumn(mouse, 1);
@@ -116,6 +117,8 @@ namespace SlidingPuzzle
 
 
         }
+
+        //Source for this part of the code: https://stackoverflow.com/questions/16742262/adding-image-to-grid-c-sharp
 
         //Creates string with the location of all the images 
         static String ImgName = "ms-appx://SlidingPuzzle/Assets/Image";
@@ -146,7 +149,7 @@ namespace SlidingPuzzle
             Image current = (Image)sender;
             moveMe1 = current;
 
-            moveMe2 = FindName("theMouse") as Image;
+            moveMe2 = FindName("Mouse") as Image;
 
             mouseRow = (int)moveMe2.GetValue(Grid.RowProperty);
             mouseColumn = (int)moveMe2.GetValue(Grid.ColumnProperty);
@@ -162,6 +165,9 @@ namespace SlidingPuzzle
 
                 moveMe2.SetValue(Grid.RowProperty, rHolder);
                 moveMe2.SetValue(Grid.ColumnProperty, cHolder);
+
+                moves++;
+                endGame();
             }
             //Check should it be able to move left or right
             else if ((rHolder == mouseRow && (cHolder - 1) == mouseColumn) || (rHolder == mouseRow && (cHolder + 1) == mouseColumn))
@@ -171,6 +177,95 @@ namespace SlidingPuzzle
 
                 moveMe2.SetValue(Grid.RowProperty, rHolder);
                 moveMe2.SetValue(Grid.ColumnProperty, cHolder);
+
+                moves++;
+                endGame();
+            }
+        }
+
+
+        private void endGame()
+        {
+            Image check1 = FindName("cat1") as Image;
+            int spaceCheck1 = (int)check1.GetValue(Grid.RowProperty);
+            Image check2 = FindName("cat2") as Image;
+            int spaceCheck2 = (int)check2.GetValue(Grid.RowProperty);
+            Image check3 = FindName("cat3") as Image;
+            int spaceCheck3 = (int)check3.GetValue(Grid.RowProperty);
+            Image check4 = FindName("cat4") as Image;
+            int spaceCheck4 = (int)check4.GetValue(Grid.RowProperty);
+            Image check5 = FindName("Mouse") as Image;
+            int spaceCheck5 = (int)check5.GetValue(Grid.RowProperty);
+            Image check6 = FindName("cat6") as Image;
+            int spaceCheck6 = (int)check6.GetValue(Grid.RowProperty);
+            Image check7 = FindName("cat7") as Image;
+            int spaceCheck7 = (int)check7.GetValue(Grid.RowProperty);
+            Image check8 = FindName("cat8") as Image;
+            int spaceCheck8 = (int)check8.GetValue(Grid.RowProperty);
+            Image check9 = FindName("cat9") as Image;
+            int spaceCheck9 = (int)check9.GetValue(Grid.RowProperty);
+
+            if (spaceCheck1 == 0 && spaceCheck2 == 0 && spaceCheck3 == 0 && spaceCheck4 == 1 && spaceCheck5 == 1 && spaceCheck6 == 1 && spaceCheck7 == 2 && spaceCheck8 == 2 && spaceCheck9 == 2)
+            {
+                spaceCheck1 = (int)check1.GetValue(Grid.ColumnProperty);
+                spaceCheck2 = (int)check2.GetValue(Grid.ColumnProperty);
+                spaceCheck3 = (int)check3.GetValue(Grid.ColumnProperty);
+                spaceCheck4 = (int)check4.GetValue(Grid.ColumnProperty);
+                spaceCheck5 = (int)check5.GetValue(Grid.ColumnProperty);
+                spaceCheck6 = (int)check6.GetValue(Grid.ColumnProperty);
+                spaceCheck7 = (int)check7.GetValue(Grid.ColumnProperty);
+                spaceCheck8 = (int)check8.GetValue(Grid.ColumnProperty);
+                spaceCheck9 = (int)check9.GetValue(Grid.ColumnProperty);
+
+                if (spaceCheck1 == 0 && spaceCheck2 == 1 && spaceCheck3 == 2 && spaceCheck4 == 0 && spaceCheck5 == 1 && spaceCheck6 == 2 && spaceCheck7 == 0 && spaceCheck8 == 1 && spaceCheck9 == 2)
+                {
+                    Grid board = FindName("ChessBoard") as Grid;
+
+                    Image done;
+                    done = CreateImage(4);
+                    done.Name = "Done";
+
+                    done.Width = (_iWidth * _rows) * 0.335;
+                    done.Height = (_iHeight * _rows) * 0.335;
+
+                    //Adds image to one of the spaces in the grid and also them to be tapped
+                    Grid.SetRow(done, 1);
+                    Grid.SetColumn(done, 1);
+                    board.Children.Add(done);
+
+                    board.Children.Remove(mouse);
+                    check1.Tapped -= El1_Tapped;
+                    check1.Width = (_iWidth * _rows) * 0.335;
+                    check1.Height = (_iHeight * _rows) * 0.335;
+
+                    check2.Tapped -= El1_Tapped;
+                    check2.Width = (_iWidth * _rows) * 0.335;
+                    check2.Height = (_iHeight * _rows) * 0.335;
+
+                    check3.Tapped -= El1_Tapped;
+                    check3.Width = (_iWidth * _rows) * 0.335;
+                    check3.Height = (_iHeight * _rows) * 0.335;
+
+                    check4.Tapped -= El1_Tapped;
+                    check4.Width = (_iWidth * _rows) * 0.335;
+                    check4.Height = (_iHeight * _rows) * 0.335;
+
+                    check6.Tapped -= El1_Tapped;
+                    check6.Width = (_iWidth * _rows) * 0.335;
+                    check6.Height = (_iHeight * _rows) * 0.335;
+
+                    check7.Tapped -= El1_Tapped;
+                    check7.Width = (_iWidth * _rows) * 0.335;
+                    check7.Height = (_iHeight * _rows) * 0.335;
+
+                    check8.Tapped -= El1_Tapped;
+                    check8.Width = (_iWidth * _rows) * 0.335;
+                    check8.Height = (_iHeight * _rows) * 0.335;
+
+                    check9.Tapped -= El1_Tapped;
+                    check9.Width = (_iWidth * _rows) * 0.335;
+                    check9.Height = (_iHeight * _rows) * 0.335;
+                }
             }
         }
 
@@ -238,10 +333,7 @@ namespace SlidingPuzzle
                     brdr.SetValue(Grid.ColumnProperty, iC);
                     // give it a background colour
                     brdr.Background = new SolidColorBrush(Colors.White);
-                    if (0 == (iR + iC) % 2) // bottom left is black on 8
-                    {
-                        brdr.Background = new SolidColorBrush(Colors.White);
-                    }
+                    
                     // add it to the chess board children collection
                     grdBoard.Children.Add(brdr);
                     #endregion
