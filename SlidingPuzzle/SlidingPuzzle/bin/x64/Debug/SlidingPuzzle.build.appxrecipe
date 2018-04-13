@@ -334,8 +334,32 @@
     <AppxPackagedFile Include="C:\Users\Peter\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image1.png">
+      <PackagePath>Assets\Image1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image2.png">
+      <PackagePath>Assets\Image2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image3.png">
+      <PackagePath>Assets\Image3.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image4.png">
+      <PackagePath>Assets\Image4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image5.png">
+      <PackagePath>Assets\Image5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image6.png">
+      <PackagePath>Assets\Image6.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image7.png">
+      <PackagePath>Assets\Image7.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image8.png">
+      <PackagePath>Assets\Image8.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image9.png">
+      <PackagePath>Assets\Image9.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -363,6 +387,9 @@
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\SlidingPuzzle.xr.xml">
       <PackagePath>SlidingPuzzle.xr.xml</PackagePath>

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
@@ -24,8 +25,9 @@ namespace SlidingPuzzle
     {
         #region Global Variables _rows is essential, don't delete it
         int _rows;
-        const int _iHeight = 55;
-        int _iWidth = 55;
+        const int _iHeight = 100;
+        int _iWidth = 100;
+        //int _iWidth = 55;
         #endregion
 
         #region Constructor and set up code
@@ -79,7 +81,8 @@ namespace SlidingPuzzle
 
             // check the size of board and decide how many cats, how many mice
             //int numCats = _rows / 2;
-            Ellipse cat;
+            //Ellipse cat;
+            Image cat;
             Grid board = FindName("ChessBoard") as Grid;
             int x = 0;
 
@@ -90,26 +93,38 @@ namespace SlidingPuzzle
 
                 for (int j = 0; j <= (_rows - 1); j++)
                 {
-                    cat = new Ellipse();
+                    /*cat = new Ellipse();
                     cat.Name = "cat" + (x + 1).ToString();
                     cat.Height = _iHeight * 0.75;
                     cat.Width = _iWidth * 0.75;
                     cat.HorizontalAlignment = HorizontalAlignment.Center;
                     cat.VerticalAlignment = VerticalAlignment.Center;
-                    cat.Fill = new SolidColorBrush(Colors.Red);
+                    cat.Fill = new SolidColorBrush(Colors.Red);*/
+
+                    
 
                     if (i == 1 && j == 1)
                     {
-                        //Used to leave one space empty on the board 
+                        //Used to leave one space empty on the board
+                        x++;
                     }
 
                     else
                     {
-                        cat.SetValue(Grid.RowProperty, i);
-                        cat.SetValue(Grid.ColumnProperty, j);
+                        //cat.SetValue(Grid.RowProperty, i);
+                        //cat.SetValue(Grid.ColumnProperty, j);
 
-                        cat.Tapped += El1_Tapped;
+                        //cat.Tapped += El1_Tapped;
+                        //board.Children.Add(cat);
+
+                        cat = CreateImage(x);
+                        cat.Name = "cat" + (x + 1).ToString();
+
+                        Grid.SetRow(cat, i);
+                        Grid.SetColumn(cat, j);
                         board.Children.Add(cat);
+                        cat.Tapped += El1_Tapped;
+
                         x++;
                     }
                 }
@@ -119,7 +134,7 @@ namespace SlidingPuzzle
             // mouse = green ellipse, same width
             // create _rows number of ellipses for cats
             // create one for the mouse
-            Ellipse mouse = new Ellipse();
+            /*Ellipse mouse = new Ellipse();
             mouse.Name = "theMouse";
             mouse.Height = _iHeight * 0.75;
             mouse.Width = _iWidth * 0.75;
@@ -131,10 +146,39 @@ namespace SlidingPuzzle
             
             board.Children.Add(mouse);
 
+            Image imgAnimal = new Image();
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(@"pack://application:,,,../Images/1.png");
+            img.EndInit();
+            imgAnimal.Source = img;*/
+
+            /*Image mouse = new Image();
+            //BitmapImage bitmapImage = new BitmapImage();
+            //Uri uri = new Uri("Assets/Logo.png");
+            BitmapImage bitmapImage =
+                     new BitmapImage(new Uri("ms-appx://SlidingPuzzle/Assets/Logo.png"));
+            //bitmapImage.UriSource = uri;
+            mouse.Source = bitmapImage;
+
+            mouse.Height = _iHeight * 0.75;
+            mouse.Width = _iWidth * 0.75;
+            mouse.HorizontalAlignment = HorizontalAlignment.Center;
+            mouse.VerticalAlignment = VerticalAlignment.Center;
+            mouse.SetValue(Grid.RowProperty, 1);
+            mouse.SetValue(Grid.ColumnProperty, 1);*/
+
+            Image mouse;
+            mouse = CreateImage(4);
+            mouse.Name = "theMouse";
+            Grid.SetRow(mouse, 1);
+            Grid.SetColumn(mouse, 1);
+            board.Children.Add(mouse);
+
             // add event handler to el1
             foreach (var item in board.Children)
             {
-                if (item.GetType() == typeof(Ellipse))
+                if (item.GetType() == typeof(Image))
                 {
 
                 }
@@ -144,17 +188,34 @@ namespace SlidingPuzzle
 
         }
 
+        static String ImgName = "ms-appx://SlidingPuzzle/Assets/Image";
+
+        private Image CreateImage(int cORm)
+        {
+            String imageName = ImgName + (cORm + 1).ToString() + ".png";
+
+            Image Mole = new Image();
+
+            Mole.Width = (_iWidth * _rows)* 0.33;
+            Mole.Height = (_iHeight * _rows) * 0.33;
+            ImageSource MoleImage = new BitmapImage(new Uri(imageName));
+            Mole.Source = MoleImage;
+
+            return Mole;
+
+        }
+
         bool mFirst = false;
-        Ellipse moveMe1, moveMe2;
+        Image moveMe1, moveMe2;
         private void El1_Tapped(object sender, TappedRoutedEventArgs e)
         {
             int rHolder, cHolder;
             int mouseRow, mouseColumn;
 
-            Ellipse current = (Ellipse)sender;
+            Image current = (Image)sender;
             moveMe1 = current;
 
-            moveMe2 = FindName("theMouse") as Ellipse;
+            moveMe2 = FindName("theMouse") as Image;
 
             mouseRow = (int)moveMe2.GetValue(Grid.RowProperty);
             mouseColumn = (int)moveMe2.GetValue(Grid.ColumnProperty);

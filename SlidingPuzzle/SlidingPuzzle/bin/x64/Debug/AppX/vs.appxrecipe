@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>DF9953A6508F24F1D415191EDD90231FD2F757905DE27805BAA46B38B05114B3</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>7C16BD55A6F8F92DE3B65C74884E307F3C7CF55F1F1FD170A77FFA38CAEE281D</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>1bff347b-0c41-40a1-9cb8-60af29afeb0a_1.0.0.0_x64__tp1tpcm9wdwpy</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>1bff347b-0c41-40a1-9cb8-60af29afeb0a_tp1tpcm9wdwpy!App</RegisteredUserModeAppID>
     <RegisteredPackageID>1bff347b-0c41-40a1-9cb8-60af29afeb0a</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-12T20:47:02.327</Modified>
+      <Modified>2018-04-13T18:22:41.596</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\SlidingPuzzle.exe">
       <PackagePath>entrypoint\SlidingPuzzle.exe</PackagePath>
-      <Modified>2018-04-12T20:47:01.267</Modified>
+      <Modified>2018-04-13T18:15:36.953</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -448,9 +448,41 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T22:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-04-10T16:39:25.500</Modified>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image1.png">
+      <PackagePath>Assets\Image1.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image2.png">
+      <PackagePath>Assets\Image2.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image3.png">
+      <PackagePath>Assets\Image3.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image4.png">
+      <PackagePath>Assets\Image4.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image5.png">
+      <PackagePath>Assets\Image5.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image6.png">
+      <PackagePath>Assets\Image6.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image7.png">
+      <PackagePath>Assets\Image7.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image8.png">
+      <PackagePath>Assets\Image8.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\Image9.png">
+      <PackagePath>Assets\Image9.png</PackagePath>
+      <Modified>2018-04-13T20:12:00.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -486,9 +518,13 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T16:30:08.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2018-04-10T16:39:25.500</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\SlidingPuzzle.xr.xml">
       <PackagePath>SlidingPuzzle.xr.xml</PackagePath>
-      <Modified>2018-04-11T20:20:12.582</Modified>
+      <Modified>2018-04-13T17:11:32.375</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -497,11 +533,11 @@
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-11T20:24:03.851</Modified>
+      <Modified>2018-04-13T18:13:43.928</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Peter\Desktop\G.M.I.T\G.M.I.T %28Third Year%29\Mobile Apps\Mobile-Applications-Project\SlidingPuzzle\SlidingPuzzle\bin\x64\Debug\Core\SlidingPuzzle.exe">
       <PackagePath>SlidingPuzzle.exe</PackagePath>
-      <Modified>2018-04-12T20:47:02.318</Modified>
+      <Modified>2018-04-13T18:22:41.590</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
