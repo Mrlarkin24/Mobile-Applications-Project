@@ -71,28 +71,33 @@ namespace SlidingPuzzle
 
                 for (int j = 0; j < _rows; j++)
                 {
-                    if (i == 1 && j == 1)
+                    if (i == (_rows - 1) && j == (_rows - 1))
                     {
                         //Used to leave one space empty on the board
 
                         //Counter for naming
-                        x++;
+                        //x++;
                     }
 
                     else
                     {
+                     
                         //Call the CreateImage function and adds it to one of the cat objects 
                         cat = CreateImage(x);
                         cat.Name = "cat" + (x + 1).ToString();
 
+
+                        randomize(cat, i, j);
                         //Adds image to one of the spaces in the grid and also them to be tapped
-                        Grid.SetRow(cat, i);
-                        Grid.SetColumn(cat, j);
+                        //Grid.SetRow(cat, i);
+                        //Grid.SetColumn(cat, j);
                         board.Children.Add(cat);
-                        cat.Tapped += El1_Tapped;
                         
+                        cat.Tapped += El1_Tapped;
+
                         //Counter for naming
                         x++;
+                        
                     }
                 }
 
@@ -101,9 +106,11 @@ namespace SlidingPuzzle
             //Call the CreateImage function and adds it to one of the mouse objects 
             mouse = CreateImage(-1);
             mouse.Name = "Mouse";
-            Grid.SetRow(mouse, 1);
-            Grid.SetColumn(mouse, 1);
+            Grid.SetRow(mouse, (_rows - 1));
+            Grid.SetColumn(mouse, (_rows - 1));
             board.Children.Add(mouse);
+
+            
 
             // add event handler to el1
             foreach (var item in board.Children)
@@ -115,6 +122,34 @@ namespace SlidingPuzzle
 
             }
 
+
+        }
+
+        int iHold = 0, jHold = 0, swap = 0;
+        private void randomize(object sender, int i, int j)
+        {
+            jHold++;
+            Image current = (Image)sender;
+            if (jHold == 3)
+            {
+                iHold++;
+                jHold = 0;
+            }
+
+            if (swap == 1)
+            {
+                iHold = 2;
+                jHold = 1;
+            }
+            else if (i == 2 && j == 0)
+            {
+                iHold = 0;
+                jHold = 0;
+                swap = 1;
+            }
+
+            Grid.SetRow(current, iHold);
+            Grid.SetColumn(current, jHold);
 
         }
 
@@ -194,7 +229,7 @@ namespace SlidingPuzzle
             int spaceCheck3 = (int)check3.GetValue(Grid.RowProperty);
             Image check4 = FindName("cat4") as Image;
             int spaceCheck4 = (int)check4.GetValue(Grid.RowProperty);
-            Image check5 = FindName("Mouse") as Image;
+            Image check5 = FindName("cat5") as Image;
             int spaceCheck5 = (int)check5.GetValue(Grid.RowProperty);
             Image check6 = FindName("cat6") as Image;
             int spaceCheck6 = (int)check6.GetValue(Grid.RowProperty);
@@ -202,7 +237,7 @@ namespace SlidingPuzzle
             int spaceCheck7 = (int)check7.GetValue(Grid.RowProperty);
             Image check8 = FindName("cat8") as Image;
             int spaceCheck8 = (int)check8.GetValue(Grid.RowProperty);
-            Image check9 = FindName("cat9") as Image;
+            Image check9 = FindName("Mouse") as Image;
             int spaceCheck9 = (int)check9.GetValue(Grid.RowProperty);
 
             if (spaceCheck1 == 0 && spaceCheck2 == 0 && spaceCheck3 == 0 && spaceCheck4 == 1 && spaceCheck5 == 1 && spaceCheck6 == 1 && spaceCheck7 == 2 && spaceCheck8 == 2 && spaceCheck9 == 2)
@@ -221,16 +256,18 @@ namespace SlidingPuzzle
                 {
                     Grid board = FindName("ChessBoard") as Grid;
 
+                    int finished = (_rows * _rows) - 1;
+
                     Image done;
-                    done = CreateImage(4);
+                    done = CreateImage(finished);
                     done.Name = "Done";
 
                     done.Width = (_iWidth * _rows) * 0.335;
                     done.Height = (_iHeight * _rows) * 0.335;
 
                     //Adds image to one of the spaces in the grid and also them to be tapped
-                    Grid.SetRow(done, 1);
-                    Grid.SetColumn(done, 1);
+                    Grid.SetRow(done, (_rows -1));
+                    Grid.SetColumn(done, (_rows -1));
                     board.Children.Add(done);
 
                     board.Children.Remove(mouse);
@@ -250,6 +287,10 @@ namespace SlidingPuzzle
                     check4.Width = (_iWidth * _rows) * 0.335;
                     check4.Height = (_iHeight * _rows) * 0.335;
 
+                    check5.Tapped -= El1_Tapped;
+                    check5.Width = (_iWidth * _rows) * 0.335;
+                    check5.Height = (_iHeight * _rows) * 0.335;
+
                     check6.Tapped -= El1_Tapped;
                     check6.Width = (_iWidth * _rows) * 0.335;
                     check6.Height = (_iHeight * _rows) * 0.335;
@@ -262,9 +303,6 @@ namespace SlidingPuzzle
                     check8.Width = (_iWidth * _rows) * 0.335;
                     check8.Height = (_iHeight * _rows) * 0.335;
 
-                    check9.Tapped -= El1_Tapped;
-                    check9.Width = (_iWidth * _rows) * 0.335;
-                    check9.Height = (_iHeight * _rows) * 0.335;
                 }
             }
         }
